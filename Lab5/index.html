@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style1.css">
+    <title>Great Learning</title>
+</head>
+<body>
+    <div class="navbar">
+        
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#home">Profile Page</a></li>
+            <li><a href="#home">Mentor</a></li>
+        
+        </ul>
+        <div class="search">
+            <form  action="https://www.google.com/search" method="get">
+                <input type="text" placeholder="Search.." name="q">
+                <button type="submit"><i class="fa fa-search"></i></button>
+              </form>
+        </div>
+    
+</div>
+<div class="carousel-wrapper">
+    <span id="item-1"></span>
+    <span id="item-2"></span>
+    <span id="item-3"></span>
+    <div class="carousel-item item-1">
+        <a href="#item-3" class="arrow-prev arrow"></a>
+        <div>
+            <h1>Java 1 Developer</h1>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, voluptatum reiciendis ut ipsa eveniet ullam ratione, officiis dolorem expedita, odio ipsum minus corrupti ab laborum. Dolorum optio velit adipisci dolor!
+            </p>
+        </div>
+        <a href="#item-2" class="arrow-next arrow"></a>
+    </div>
+    <div class="carousel-item item-2">
+        <a href="#item-1" class="arrow-prev arrow"></a>
+        <div>
+        <h1>Java 2 Developer</h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, voluptatum reiciendis ut ipsa eveniet ullam ratione, officiis dolorem expedita, odio ipsum minus corrupti ab laborum. Dolorum optio velit adipisci dolor!
+        </p>
+    </div>
+        <a href="#item-3" class="arrow-next arrow"></a>
+    </div>
+    <div class="carousel-item item-3">
+        <a href="#item-2" class="arrow-prev arrow"></a>
+        <div>
+        <h1>Java 3 Developer</h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, voluptatum reiciendis ut ipsa eveniet ullam ratione, officiis dolorem expedita, odio ipsum minus corrupti ab laborum. Dolorum optio velit adipisci dolor!
+        </p>
+    </div>
+        <a href="#item-1" class="arrow-next arrow"></a>
+    </div>
+</div>
+   <div class="login-page">
+       <div class="form">
+           <form class="register-form" id="register" onsubmit="validation()">
+            <input class="form-input" type="text" placeholder="User name" id="uname" required/>
+            <input class="form-input" type="password" placeholder="Password" id="pwd" required/>
+            <input class="form-input" type="email" placeholder="Email Id" id="email" required/>
+            <input class="form-input" type="tel" placeholder="Phone Number" id="tel" required/>
+            <button class="form-button" onclick="saveData()">Register</button>
+            <p class="message">Already Registered?<a href="#login">Login</a></p>
+           </form>
+           <!-- Login Page       -->
+           <form class="login-form" action="login.html" method="get" id="login">
+            <input class="form-input" type="text" placeholder="User name" id="uname" required/>
+            <input class="form-input" type="password" placeholder="Password" id="pwd" required/>
+            <button class="form-button" onclick="login()">Login</button>
+            <p class="message">Not Registered?<a href="#register">Register</a></p>
+           </form>
+
+       </div>
+
+   </div>
+   <button  onclick="get_data(get_info)">Fetch</button>
+   <p id="name"></p>
+   <p id="phone"></p>
+   
+   
+
+   <footer class="footer">
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#home">Profile Page</a></li>
+        <li><a href="#home">Mentor</a></li>
+    
+    </ul>
+    <p>&copy ABC Technologies 2022</p>
+   </footer>
+
+   <!--JavaScript Begins Here-->
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script>
+       $('.message a').click(function(){
+        $('form').animate({height:"toggle",opacity:"toggle"},"slow");
+       });
+   </script>
+   <script>
+       let get_data=(get_info1)=>{
+           console.log("Data Retrieving in Process");
+           setTimeout(() => {
+            get_info1();
+           }, 3000);
+           
+       }
+       let get_info=()=>
+       {
+           let name,phone;
+           name=localStorage.getItem("name");
+           phone=localStorage.getItem("tel");
+           document.getElementById('name').innerHTML=name;
+           document.getElementById('phone').innerHTML=phone;
+       }
+   </script>
+   
+   
+   <script>
+       function validation()
+       {
+       var pwd=document.getElementById("pwd").value;
+       if(pwd.length<=6)
+       {
+           window.alert("Password length should atleast 6 charcaters");
+       }
+    }
+   </script>
+   
+   <script>
+       function saveData()
+       {
+            var name,email,password,phone;
+            name=document.getElementById("uname").value;
+            email=document.getElementById("email").value;
+            password=document.getElementById("pwd").value;
+            phone=document.getElementById("tel").value;
+            localStorage.setItem("name",name);
+            localStorage.setItem("email",email);
+            localStorage.setItem("pwd",password);
+            localStorage.setItem("tel",phone);
+        }
+
+        /*Login function for async await*/
+        async function login()
+        {
+            var username,password;
+            username=document.getElementById("uname").value;
+            password=document.getElementById("pwd").value;
+            var result=await verifyUser(username,password);
+        }
+        var verifyUser=async function(username,password)
+        {
+            try
+            {
+                var name=localStorage.getItem("name");
+                var psd=localStorage.getItem("pwd");
+                sleep(8000);
+                return username==name && password==psd;
+            }
+            catch(e)
+            {
+
+            }
+        };
+        function sleep(milliseconds)
+        {
+            var date=Date.now();
+            var currentDate=null;
+            do
+            {
+                currentDate=Date.now();
+            }
+            while(currentDate-date<milliseconds)
+        }
+   </script>
+</body>
+</html>
