@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="student1" class="demo.Student">  
+       <property name="name" value="John"></property>
+    </bean>
+
+    <bean id="student2" class="demo.Student">
+       <property name="name" value="Henry"></property>
+    </bean>
+    <bean id="emp1" class="demo.Employee">
+       <property name="empId" value="123456"></property>
+       <property name="empName" value="Annie"></property>
+    </bean>
+    <bean id="book1" class="demo.Book">
+       <property name="name" value="Book1"></property>
+       <property name="type" value="BookType"></property>
+    </bean>
+
+    <bean id="author1" class="demo.Author">
+    <constructor-arg type="demo.Book" ref="book1"/>
+    <property name="name" value="Author1"></property>
+    
+</bean>
+
+</beans>

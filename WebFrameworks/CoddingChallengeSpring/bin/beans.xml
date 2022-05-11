@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    
+    <bean id="u" class="week7.User">
+     <property name="uid" value="1">
+     </property>
+     <property name="uname" value="john"></property>
+     <property name="contacts">
+     <list>
+     <ref bean="c1"></ref>
+     <ref bean="c2"></ref>
+     <ref bean="c3"></ref>
+     </list>
+     </property>
+    </bean>
+    <bean id="u1" class="week7.User">
+     <property name="uid" value="2">
+     </property>
+     <property name="uname" value="jack"></property>
+     <property name="contacts">
+     <list>
+     <ref bean="c1"></ref>
+     <ref bean="c2"></ref>
+     </list>
+     </property>
+    </bean>
+    <bean id="c1" class="week7.Contact">
+    <property name="state" value="Karnataka"></property>
+    </bean>
+    <bean id="c2" class="week7.Contact">
+    <property name="state" value="AP"></property>
+    </bean>
+    <bean id="c3" class="week7.Contact">
+    <property name="state" value="Odisha"></property>
+    </bean>
+    
+
+
+</beans>
