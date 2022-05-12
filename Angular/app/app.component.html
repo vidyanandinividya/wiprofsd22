@@ -1,0 +1,16 @@
+<h1>Reactive Form</h1>
+{{registrationForm.value | json}}
+<form [formGroup]="registrationForm">
+  <input formControlName="username" type="text" name="username" placeholder="User Name"/><br><br>
+  <input formControlName="emailid" type="email" name="emailid" placeholder="Email Id"/><br><br>
+  <div formGroupName="address">
+    <input formControlName="city" type="text" name="city" placeholder="City"/><br><br>
+    <input formControlName="state" type="text" name="state" placeholder="State"/><br><br>
+    <input formControlName="postalcode" type="text" name="postalcode" placeholder="Postal Code"/><br><br>
+
+  </div>
+
+  <button type="submit">Submit</button>
+  <!--<button (click)="LoadApiData()">Load Data</button>-->
+
+</form>
